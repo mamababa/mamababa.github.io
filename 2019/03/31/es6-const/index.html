@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>ES6-const | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="const 是一个常量.它实际上保证的并不是变量的值不得改动,而是变量指向的那个内存地址所保存的数据不得改动.对于简单类型的数据(数值、字符串、布尔值)值就保存在变量指向的那个内存地址，但对于符合类型的数据(主要是对象和数组)变量指向的内存地址，保存的只是一个指向实际数据的指针,const只能保证这个指针是固定的(即总是指向另一个固定的地址),至于它指向的数据结构是不是可变的，就完全不能控制了，因">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6-const">
+<meta property="og:url" content="http://yoursite.com/2019/03/31/es6-const/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="const 是一个常量.它实际上保证的并不是变量的值不得改动,而是变量指向的那个内存地址所保存的数据不得改动.对于简单类型的数据(数值、字符串、布尔值)值就保存在变量指向的那个内存地址，但对于符合类型的数据(主要是对象和数组)变量指向的内存地址，保存的只是一个指向实际数据的指针,const只能保证这个指针是固定的(即总是指向另一个固定的地址),至于它指向的数据结构是不是可变的，就完全不能控制了，因">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-31T14:48:01.746Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6-const">
+<meta name="twitter:description" content="const 是一个常量.它实际上保证的并不是变量的值不得改动,而是变量指向的那个内存地址所保存的数据不得改动.对于简单类型的数据(数值、字符串、布尔值)值就保存在变量指向的那个内存地址，但对于符合类型的数据(主要是对象和数组)变量指向的内存地址，保存的只是一个指向实际数据的指针,const只能保证这个指针是固定的(即总是指向另一个固定的地址),至于它指向的数据结构是不是可变的，就完全不能控制了，因">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-es6-const" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/31/es6-const/" class="article-date">
+  <time datetime="2019-03-31T13:52:53.597Z" itemprop="datePublished">2019-03-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ES6-const
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>const 是一个常量.它实际上保证的并不是变量的值不得改动,而是变量指向的那个内存地址所保存的数据不得改动.对于简单类型的数据(数值、字符串、布尔值)<br>值就保存在变量指向的那个内存地址，但对于符合类型的数据(主要是对象和数组)变量指向的内存地址，保存的只是一个指向实际数据的指针,const只能保证这个指针是固定的(即总是指向另一个固定的地址),至于它指向的数据结构是不是可变的，就完全不能控制了，因此,将一个对象声明为产量必须小心。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const foo = &#123;&#125;;</span><br><span class="line">//为foo添加一个属性,可以成功</span><br><span class="line">foo.prop = 123;</span><br><span class="line">foo.prop //123</span><br><span class="line">/将foo指向另一个对象,就会报错</span><br><span class="line">foo =&#123;&#125;;  //TypeError:&apos;foo&apos; is read-only</span><br></pre></td></tr></table></figure></p>
+<p>上面代码中，常量foo储存的是一个地址，这个地址指向一个对象，不可变的只是这个地址，既不能把foo指向另一个地址，但对象本身是可变的，所以既然可以为其添加新属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const a= [];</span><br><span class="line">a.push(&apos;Hello&apos;);</span><br><span class="line">a.lenth = 0;</span><br><span class="line">a= [&apos;Dave]   //Error</span><br></pre></td></tr></table></figure></p>
+<p>上面代码中，常量a是一个数组，这个数组本身就可写的，但是如果将另一个数组赋给a就会报错。</p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/31/es6-const/" data-id="cju689lax0000cgusj2sj0wfi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/01/12/exportAndImport/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">first blog about &#39;模块加载&#39;</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/31/es6-const/">ES6-const</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/12/exportAndImport/">first blog about &#39;模块加载&#39;</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/12/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Cassie Wang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
